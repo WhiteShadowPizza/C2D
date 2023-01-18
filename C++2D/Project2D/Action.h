@@ -55,6 +55,7 @@ public:
 	void Judge()
 	{
 		/*** ダッシュ判定 ***/
+		/*
 		if ((Key.input[KEY_INPUT_B] > 0) // F押下（長押しも有効）
 			)
 		{
@@ -66,7 +67,7 @@ public:
 			Mov.Dash = OFF;
 			Mov.X = MOVEX;		// X方向移動量（通常時）
 		}
-
+		*/
 		/* メインキャラの四角の左右は、Mov.Xをもとに接触予測 */
 		MainChar.Cor.RiUp.Ri = Sta.Cood.Pix[MainChar.Pos.X - Sta_PosX + CELL - 1 + Mov.X][MainChar.Pos.Y];
 		MainChar.Cor.RiDo.Ri = Sta.Cood.Pix[MainChar.Pos.X - Sta_PosX + CELL - 1 + Mov.X][MainChar.Pos.Y + CELL - 1];
@@ -321,6 +322,10 @@ public:
 				T = T_k * ((double)Cou / 60.0);
 				// HUMAN PosY cal
 				Mov.Y = (int)(pow(T, 0.8));
+				if ((Key.input[KEY_INPUT_B] > 0))
+				{
+					Mov.Y = (int)(pow(T, 0.1));
+				}
 				for (int y = 1; y <= Mov.Y; y++)
 				{
 					if ((Sta.Cood.Pix[MainChar.Pos.X - Sta_PosX][MainChar.Pos.Y + CELL] != PIC_BACK) ||				// 左下に何かある
@@ -337,6 +342,7 @@ public:
 					}
 				}
 			}
+			
 			else // 落下
 			{
 				MainChar.Fall = TRUE;
@@ -380,7 +386,7 @@ public:
 		DrawFormatStringFToHandle(COMD_POS_X, COMD_POS_Y, Col.White, Fon.FH[10], "右移動：[→]or[D]");
 		DrawFormatStringFToHandle(COMD_POS_X, COMD_POS_Y + 10, Col.White, Fon.FH[10], "左移動：[←]or[A]");
 		DrawFormatStringFToHandle(COMD_POS_X, COMD_POS_Y + 20, Col.White, Fon.FH[10], "ジャンプ：[Space]");
-		DrawFormatStringFToHandle(COMD_POS_X, COMD_POS_Y + 30, Col.White, Fon.FH[10], "ダッシュ：[B]");
+		DrawFormatStringFToHandle(COMD_POS_X, COMD_POS_Y + 30, Col.White, Fon.FH[10], "滑空：[B]");
 		DrawFormatStringFToHandle(COMD_POS_X, COMD_POS_Y + 40, Col.White, Fon.FH[10], "ゲーム終了：[Esc]");
 	}
 	
