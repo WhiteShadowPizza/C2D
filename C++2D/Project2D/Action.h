@@ -110,10 +110,9 @@ public:
 			{
 				Mov.JumpState = JUMP_UP; // ジャンプする
 
-#ifdef DEF_SOUND_VALID
 				/*** Jump音再生 ***/
 				Snd.PlayJumpSound();
-#endif /*  DEF_SOUND_VALID */
+
 			}
 		}
 		else if ((Key.input[KEY_INPUT_D] > 0 || Key.input[KEY_INPUT_RIGHT] > 0) // D(or→)押下（長押しも有効）
