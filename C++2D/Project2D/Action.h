@@ -54,20 +54,6 @@ public:
 	/*** 判定 ***/
 	void Judge()
 	{
-		/*** ダッシュ判定 ***/
-		/*
-		if ((Key.input[KEY_INPUT_B] > 0) // F押下（長押しも有効）
-			)
-		{
-			Mov.Dash = ON;
-			Mov.X = MOVEX_D;	// X方向移動量（ダッシュ時）
-		}
-		else
-		{
-			Mov.Dash = OFF;
-			Mov.X = MOVEX;		// X方向移動量（通常時）
-		}
-		*/
 		/* メインキャラの四角の左右は、Mov.Xをもとに接触予測 */
 		MainChar.Cor.RiUp.Ri = Sta.Cood.Pix[MainChar.Pos.X - Sta_PosX + CELL - 1 + Mov.X][MainChar.Pos.Y];
 		MainChar.Cor.RiDo.Ri = Sta.Cood.Pix[MainChar.Pos.X - Sta_PosX + CELL - 1 + Mov.X][MainChar.Pos.Y + CELL - 1];
